@@ -1,12 +1,16 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
+import { useAuth } from "../auth";
+
 function Navbar() {
+    const { isLoggedIn } = useAuth();
+    console.log("login or not ", isLoggedIn);
     return (
-        <div>
+        <>
             <header>
                 <div className="container">
                     <div className="logo-brand">
-                        <NavLink to="/">Janmejay Pandya</NavLink>
+                        <NavLink to="/">ThapaTechnical</NavLink>
                     </div>
 
                     <nav>
@@ -23,18 +27,27 @@ function Navbar() {
                             <li>
                                 <NavLink to="/contact"> Contact </NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/register"> Register </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/login"> Login </NavLink>
-                            </li>
+
+                            {isLoggedIn ? (
+                                <li>
+                                    <NavLink to="/logout">Logout</NavLink>
+                                </li>
+                            ) : (
+                                <>
+                                    <li>
+                                        <NavLink to="/register"> Register </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/login"> Login </NavLink>
+                                    </li>
+                                </>
+                            )}
                         </ul>
                     </nav>
                 </div>
-            </header >
-        </div >
-    )
-}
+            </header>
+        </>
+    );
+};
 
 export default Navbar;

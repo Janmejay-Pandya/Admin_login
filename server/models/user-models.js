@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require("bcryptjs"); 
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -55,7 +56,7 @@ userSchema.methods.generateToken = async function () {
             email: this.email,
             isAdmin: this.isAdmin
         },
-            process.env.JWT_SECRECT_KEY,
+            "WORLDBESTMERNSERIESBYTHAPATECNICAL",
             {
                 expiresIn: "30d",
             }

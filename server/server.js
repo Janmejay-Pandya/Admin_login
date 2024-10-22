@@ -9,7 +9,7 @@ const contactRoute = require("./router/contact-router");
 
 //lets tackle CORS
 const corsOption = {
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5174",
     methods: "GET,POST, PUT, DELETE,PATCH,HEAD",
     credentials: true,
 };
